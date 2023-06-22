@@ -14,7 +14,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 export default function ContactList() {
   const cardStyle = {
     borderRadius: '10px',
-    height: '92vh',
+    height: '82vh',
     padding: '0',
     overflowY: 'scroll',
     marginBottom: '10px',

@@ -6,13 +6,6 @@ import SSTEP from '../assets/SSTEP.png';
 import STYLEEDGE from '../assets/STYLEEDGE.png';
 
 function Header({ styling }) {
-
-const styles = {
-    appBar: {
-        backgroundColor: 'white'
-    }
-}
-
   return (
     <AppBar sx={styling} position="fixed">
       <Toolbar>
