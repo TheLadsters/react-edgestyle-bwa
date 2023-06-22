@@ -10,6 +10,7 @@ const openedMixin = (theme) => ({
         duration: theme.transitions.duration.enteringScreen,
     }),
     overflowX: 'hidden',
+    overflowY: 'hidden'
 });
 
 
@@ -19,19 +20,20 @@ const closedMixin = (theme) => ({
         duration: theme.transitions.duration.leavingScreen,
     }),
     overflowX: 'hidden',
+    overflowY: 'hidden',
     width: `calc(${theme.spacing(7)} + 1px)`,
     [theme.breakpoints.up('sm')]: {
         width: `calc(${theme.spacing(8)} + 1px)`,
     },
 });
 
-const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
+const CustomDrawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({
         width: drawerWidth,
         flexShrink: 0,
         whiteSpace: 'nowrap',
         boxSizing: 'border-box',
-        zIndex: 1,
+        overflowY: 'hidden',
         ...(open && {
         ...openedMixin(theme),
         '& .MuiDrawer-paper': openedMixin(theme),
@@ -42,4 +44,4 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
         }),
     }),
 );
-export default Drawer
+export default CustomDrawer

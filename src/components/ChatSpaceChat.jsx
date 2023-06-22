@@ -40,7 +40,7 @@ export default function ChatSpaceChat() {
             borderRadius: '20px', padding: '10px 15px', backgroundColor: 'RGB(0,128,45)'
         },
         escalate: {
-            borderRadius: '20px', backgroundColor: '#f05454',
+            borderRadius: '20px', backgroundColor: '#68c42c',
             padding: '10px 10px', marginRight: '5px'
         },
         template: {
@@ -54,7 +54,7 @@ export default function ChatSpaceChat() {
 
   return (
     <>
-    <Card sx={{ minWidth: 275 }} style={styles.card}>
+<Card sx={{ minWidth: 275 }} style={styles.card}>
         <Tabs>
             <TabList>
                 <Tab>
@@ -80,69 +80,47 @@ export default function ChatSpaceChat() {
                 </Grid>
             </TabPanel>
         </Tabs>
-                {/* <Grid container 
-                justifyContent={'space-between'}
+
+
+    <Grid container direction={'column'}> 
+            <Grid container>
+                <Grid item xs={12}>
+                <TextField fullWidth label="Enter a message..." style={{marginBottom: '15px'}} />
+            </Grid>
+        </Grid>
+
+        <Grid container justifyContent={'space-between'}>  
+            <Grid item>
+                <IconButton size="large">
+                    <Add sx={styles.addAndEmoticon} />
+                </IconButton>
+
+                <IconButton size="large">
+                    <InsertEmoticon sx={styles.addAndEmoticon} />
+                </IconButton>
+            </Grid>
+
+            <Grid item>
+                <Button variant="contained" style={styles.escalate}
+                    onClick={openEscalateModal}
                 >
-                    <Grid item>
-                        <Typography variant="h5">
-                            Ticket Number 12345
-                        </Typography>
-                    </Grid>
-                    <Grid item>
-                        <Button variant="contained" 
-                        style={sendAndInfoStyle}
-                        onClick={openInfoModal}
-                        >
-                            Customer Information
-                            <Info style={{marginLeft: '5px'}} />
-                        </Button>
-                    </Grid>
-                </Grid> */}
+                    <Error style={{marginRight: '5px'}} />
+                    Escalate
+                </Button>
 
+                <Button variant="contained" style={styles.template}>
+                    <Forum style={{marginRight: '5px'}} />
+                    Template
+                </Button>
 
-                {/* SPACE FOR MESSAGES */}
-
-
-                <Grid container direction={'column'}> 
-                    <Grid container>
-                        <Grid item xs={12}>
-                        <TextField fullWidth label="Enter a message..." style={{marginBottom: '15px'}} />
-                        </Grid>
-                    </Grid>
-
-                    <Grid container justifyContent={'space-between'}>
-                        
-                        <Grid item>
-                            <IconButton size="large">
-                                <Add sx={styles.addAndEmoticon} />
-                            </IconButton>
-
-                            <IconButton size="large">
-                                <InsertEmoticon sx={styles.addAndEmoticon} />
-                            </IconButton>
-                        </Grid>
-
-                        <Grid item>
-                            <Button variant="contained" style={styles.escalate}
-                                onClick={openEscalateModal}
-                            >
-                                <Error style={{marginRight: '5px'}} />
-                                Escalate
-                            </Button>
-
-                            <Button variant="contained" style={styles.template}>
-                                <Forum style={{marginRight: '5px'}} />
-                                Template
-                            </Button>
-
-                            <Button variant="contained" style={styles.sendAndInfo}>
-                                Send
-                                <Send style={{marginLeft: '5px'}} />
-                            </Button>
-                        </Grid>
-                    </Grid>
-                </Grid>
-    </Card>
+                <Button variant="contained" style={styles.sendAndInfo}>
+                    Send
+                    <Send style={{marginLeft: '5px'}} />
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</Card>
 
     <EscalatePopup open={openEscalate} handleClose={closeEscalateModal} />
     <CustomerInfoPopup open={openInfo} handleClose={closeInfoModal} />

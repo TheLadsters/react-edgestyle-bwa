@@ -7,7 +7,8 @@ import {
     ListItem, ListItemButton, ListItemIcon, ListItemText} from "@mui/material";
 import { ChevronLeft, ChevronRight, Dashboard, Forum, Build, Logout } from "@mui/icons-material";
 import DrawerHeader from "../components/DrawerHeader";
-import Drawer from "../components/Drawer";
+import CustomDrawer from "../components/CustomDrawer";
+import Header from '../components/Header';
 import { useStateContext } from "../context/ContextProvider";
 import axiosClient from "../axios-client";
 
@@ -19,6 +20,29 @@ export default function ChatSidebarLayout() {
     const itemStyle = {
         color: "RGB(0,128,45)",
     };
+
+    const styles = {
+        root: {
+            display: 'flex',
+          },
+          appBar: {
+            zIndex: theme.zIndex.drawer + 1,
+            backgroundColor: 'white'
+          },
+          drawer: {
+            width: 300,
+            flexShrink: 0,
+          },
+          drawerPaper: {
+            width: 300,
+            marginTop: '64px', // Adjust the margin based on the header height
+          },
+          content: {
+            flexGrow: 1,
+            padding: theme.spacing(3),
+            marginLeft: 300,
+          },
+    }
 
     const location = useLocation();
     const [open, setOpen] = useState(false);
@@ -106,20 +130,20 @@ export default function ChatSidebarLayout() {
     }, [setUser]);
 
     return (
-        <>
-        <div>
-            HEADER
+    <div style={styles.root}>
+        <div style={styles.header}>
+            <Header styling={styles.appBar} />
         </div>
-            <Box sx={{ display: "flex" }}>
-                <CssBaseline />
-                <Drawer
-                    variant="permanent"
-                    open={open}
-                    onMouseEnter={handleDrawerOpen}
-                    onMouseLeave={handleDrawerClose}
-                >
+
+        <div style={{marginTop: '64px'}}>
+            <CustomDrawer
+                variant="permanent"
+                open={open}
+                onMouseEnter={handleDrawerOpen}
+                onMouseLeave={handleDrawerClose}
+            >
                     <DrawerHeader>
-                        <Grid container justifyContent={"space-between"}>
+                        <Grid container spacing={6} justifyContent={"space-between"}>
                             <Grid item xs={3}>
                                 <Avatar
                                     color="inherit"
@@ -230,12 +254,19 @@ export default function ChatSidebarLayout() {
                             </ListItemButton>
                         </ListItem>
                     </List>
-                </Drawer>
+       
+
+
+
+
                 <Box component="main" sx={{ flexGrow: 1, p: 0 }}>
                     <DrawerHeader />
                 </Box>
-                <Outlet />
+            </CustomDrawer>
+        </div>
+            <Box sx={{ display: "flex", marginRight: '5px' }}>   
             </Box>
-        </>  
+            <Outlet />
+    </div>  
     );
 }

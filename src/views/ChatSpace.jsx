@@ -8,8 +8,7 @@ import CustomerInfo from '../components/CustomerInfo';
 function ChatSpace() {
   return (
     <>
-        <Grid container spacing={0.7}>
-            
+        <Grid container spacing={0.7} sx={{marginTop: '60px'}}>      
             
             <Grid item xs={3}>
                 <SearchBar />
