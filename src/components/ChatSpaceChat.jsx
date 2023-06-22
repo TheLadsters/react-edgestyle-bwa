@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
-import {Grid, Card, Button, Typography, TextField, Divider, Box} from '@mui/material';
-import {Forum, Info, Send, Error, Attachment} from '@mui/icons-material';
+import {Grid, Card, Button, Typography, TextField, IconButton} from '@mui/material';
+import {Forum, Send, Error, InsertEmoticon, Add} from '@mui/icons-material';
 import EscalatePopup from './Modals/EscalatePopup';
 import CustomerInfoPopup from './Modals/CustomerInfoPopup';
 
@@ -26,31 +26,34 @@ export default function ChatSpaceChat() {
         setOpenInfo(false)
     }
 
-    const cardStyle = {
-        borderRadius: '10px', marginTop: '20px', 
-        height: '98vh', marginRight: '10px',
-        padding: '20px 20px',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between'
+    const styles = {
+        card: {
+            borderRadius: '10px', marginTop: '20px', 
+            height: '98vh', marginRight: '10px',
+            padding: '20px 20px',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between'
+        },
+        sendAndInfo: {
+            borderRadius: '20px', padding: '10px 15px', backgroundColor: 'RGB(0,128,45)'
+        },
+        escalate: {
+            borderRadius: '20px', backgroundColor: '#f05454',
+            padding: '10px 10px', marginRight: '5px'
+        },
+        template: {
+            borderRadius: '20px', backgroundColor: '#ba68c8',
+            padding: '10px 10px', marginRight: '5px'
+        },
+        addAndEmoticon: {
+            backgroundColor: '#e8e4e4',
+        }
     }
 
-    const sendAndInfoStyle = {
-        borderRadius: '20px', padding: '10px 15px'
-    }
-
-    const escalateStyle = {
-        borderRadius: '20px', backgroundColor: '#f05454',
-        padding: '10px 10px'
-    }
-
-    const templateStyle = {
-        borderRadius: '20px', backgroundColor: '#ba68c8',
-        padding: '10px 10px'
-    }
   return (
     <>
-    <Card sx={{ minWidth: 275 }} style={cardStyle}>
+    <Card sx={{ minWidth: 275 }} style={styles.card}>
                 <Grid container 
                 justifyContent={'space-between'}
                 >
@@ -83,26 +86,31 @@ export default function ChatSpaceChat() {
                     </Grid>
 
                     <Grid container justifyContent={'space-between'}>
+                        
                         <Grid item>
-                            <Button variant="contained" style={escalateStyle}
+                            <IconButton size="large">
+                                <Add sx={styles.addAndEmoticon} />
+                            </IconButton>
+
+                            <IconButton size="large">
+                                <InsertEmoticon sx={styles.addAndEmoticon} />
+                            </IconButton>
+                        </Grid>
+
+                        <Grid item>
+                            <Button variant="contained" style={styles.escalate}
                                 onClick={openEscalateModal}
                             >
                                 <Error style={{marginRight: '5px'}} />
                                 Escalate
                             </Button>
-                        </Grid>
 
-                        <Grid item>
-                            <Button variant="contained" style={templateStyle}>
+                            <Button variant="contained" style={styles.template}>
                                 <Forum style={{marginRight: '5px'}} />
                                 Template
                             </Button>
 
-                            <Button>
-                                <Attachment xs={5} />
-                            </Button>
-
-                            <Button variant="contained" style={sendAndInfoStyle}>
+                            <Button variant="contained" style={styles.sendAndInfo}>
                                 Send
                                 <Send style={{marginLeft: '5px'}} />
                             </Button>

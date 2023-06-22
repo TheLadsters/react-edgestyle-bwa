@@ -1,7 +1,7 @@
 import { styled } from '@mui/material/styles';
 import MuiDrawer from '@mui/material/Drawer';
 
-const drawerWidth = 360;
+const drawerWidth = 300;
 
 const openedMixin = (theme) => ({
     width: drawerWidth,
@@ -31,6 +31,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
         flexShrink: 0,
         whiteSpace: 'nowrap',
         boxSizing: 'border-box',
+        zIndex: 1,
         ...(open && {
         ...openedMixin(theme),
         '& .MuiDrawer-paper': openedMixin(theme),

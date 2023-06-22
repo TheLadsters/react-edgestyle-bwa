@@ -41,7 +41,7 @@ export default function ChatSidebarLayout() {
 
     const theme = useTheme();
     const itemStyle = {
-        color: "#42a5f5",
+        color: "RGB(0,128,45)",
     };
 
     const location = useLocation();
