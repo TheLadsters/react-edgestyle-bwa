@@ -237,7 +237,6 @@ export default function ChatSidebarLayout() {
                                     minWidth: 0,
                                     mr: open ? 3 : "auto",
                                     justifyContent: "center",
-                                    color: "red",
                                 }}
                             >
                                 <Logout fontSize="large" />
@@ -245,7 +244,6 @@ export default function ChatSidebarLayout() {
                             <ListItemText
                                 primary="Logout"
                                 sx={{
-                                    color: "red",
                                     opacity: open ? 1 : 0,
                                 }}
                             />
