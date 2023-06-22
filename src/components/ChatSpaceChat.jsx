@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import {Grid, Card, Button, Typography, TextField, IconButton} from '@mui/material';
 import {Forum, Send, Error, InsertEmoticon, Add} from '@mui/icons-material';
+import {Tabs, TabList, Tab, TabPanel} from '@mui/joy';
 import EscalatePopup from './Modals/EscalatePopup';
 import CustomerInfoPopup from './Modals/CustomerInfoPopup';
 
@@ -54,7 +55,32 @@ export default function ChatSpaceChat() {
   return (
     <>
     <Card sx={{ minWidth: 275 }} style={styles.card}>
-                <Grid container 
+        <Tabs>
+            <TabList>
+                <Tab>
+                    タイムライン
+                </Tab>
+
+                <Tab>
+                    Timeline
+                </Tab>
+            </TabList>
+
+            <TabPanel value={0}>
+                {/* Japanese Chat translation */}
+                <Grid>
+                    タイムライン
+                </Grid>
+            </TabPanel>
+
+            <TabPanel value={1}>
+                {/* English Chat translation */}
+                <Grid>
+                    ENGLISH TRANSLATION
+                </Grid>
+            </TabPanel>
+        </Tabs>
+                {/* <Grid container 
                 justifyContent={'space-between'}
                 >
                     <Grid item>
@@ -62,7 +88,7 @@ export default function ChatSpaceChat() {
                             Ticket Number 12345
                         </Typography>
                     </Grid>
-                    {/* <Grid item>
+                    <Grid item>
                         <Button variant="contained" 
                         style={sendAndInfoStyle}
                         onClick={openInfoModal}
@@ -70,12 +96,11 @@ export default function ChatSpaceChat() {
                             Customer Information
                             <Info style={{marginLeft: '5px'}} />
                         </Button>
-                    </Grid> */}
-                </Grid>
+                    </Grid>
+                </Grid> */}
 
 
                 {/* SPACE FOR MESSAGES */}
-
 
 
                 <Grid container direction={'column'}> 
