@@ -11,7 +11,8 @@ export default function SearchBar() {
     const styles = {
       card: {
         padding: '8px 8px',
-        marginTop: '20px'
+        marginTop: '20px',
+        width: '100%'
       },
       mainGrid: {
         flexDirection: 'column',

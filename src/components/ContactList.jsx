@@ -14,11 +14,10 @@ import ListItemButton from '@mui/material/ListItemButton';
 export default function ContactList() {
   const cardStyle = {
     borderRadius: '10px',
-    height: '72vh',
+    height: '70vh',
     padding: '0',
-    overflowY: 'scroll',
-    marginBottom: '10px',
-    width: '100%'
+    overflowY: 'auto',
+    width: '100%',
   }
   return (
       <Card style={cardStyle}>

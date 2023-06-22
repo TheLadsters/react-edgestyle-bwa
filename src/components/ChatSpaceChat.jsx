@@ -1,15 +1,17 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react'
-import {Grid, Card, Button, Typography, TextField, IconButton} from '@mui/material';
+import React, { useState, useEffect } from 'react'
+import {Grid, Card, Button, Box, TextField, IconButton} from '@mui/material';
 import {Forum, Send, Error, InsertEmoticon, Add} from '@mui/icons-material';
 import {Tabs, TabList, Tab, TabPanel} from '@mui/joy';
 import EscalatePopup from './Modals/EscalatePopup';
-import CustomerInfoPopup from './Modals/CustomerInfoPopup';
+import MessageLeft from './MessageLeft';
+import MessageRight from './MessageRight';
+import axiosClient from "../axios-client";
 
 
 export default function ChatSpaceChat() {
     const [openEscalate, setOpenEscalate] = React.useState(false);
-    const [openInfo, setOpenInfo] = React.useState(false);
+    const [messages, setMesssages] = useState([]);
 
     function openEscalateModal(){
         setOpenEscalate(true)
@@ -19,13 +21,21 @@ export default function ChatSpaceChat() {
         setOpenEscalate(false)
     }
 
-    function openInfoModal(){
-        setOpenInfo(true)
-    }
+    useEffect(() => {
+        async function fetchMessages(){
+            try{
+                await axiosClient.get("/get_messages").then(({ data }) => {
+                    setMesssages(data);
+                    console.log(data)
+                });
+            }
+            catch(err){
+                console.log(err);
+            }
+        }
 
-    function closeInfoModal(){
-        setOpenInfo(false)
-    }
+        fetchMessages();
+    }, [setMesssages]);
 
     const styles = {
         card: {
@@ -52,6 +62,14 @@ export default function ChatSpaceChat() {
         }
     }
 
+    const messageArea  = messages.map((msg, idx)=> {
+        return (
+            msg.sender_id === 1 ? 
+            <MessageLeft key={idx} message={msg.message} />
+            :
+            <MessageRight key={idx} message={msg.message} />
+    )});
+
   return (
     <>
 <Card sx={{ minWidth: 275 }} style={styles.card}>
@@ -66,10 +84,10 @@ export default function ChatSpaceChat() {
                 </Tab>
             </TabList>
 
-            <TabPanel value={0}>
+            <TabPanel  value={0}>
                 {/* Japanese Chat translation */}
-                <Grid>
-                    タイムライン
+                <Grid container>
+                    {/* {messageArea} */}
                 </Grid>
             </TabPanel>
 
@@ -123,8 +141,6 @@ export default function ChatSpaceChat() {
 </Card>
 
     <EscalatePopup open={openEscalate} handleClose={closeEscalateModal} />
-    <CustomerInfoPopup open={openInfo} handleClose={closeInfoModal} />
-
     </>
   )
 }
