@@ -59,7 +59,7 @@ export default function ChatSpaceChat() {
                             Ticket Number 12345
                         </Typography>
                     </Grid>
-                    <Grid item>
+                    {/* <Grid item>
                         <Button variant="contained" 
                         style={sendAndInfoStyle}
                         onClick={openInfoModal}
@@ -67,7 +67,7 @@ export default function ChatSpaceChat() {
                             Customer Information
                             <Info style={{marginLeft: '5px'}} />
                         </Button>
-                    </Grid>
+                    </Grid> */}
                 </Grid>
 
 

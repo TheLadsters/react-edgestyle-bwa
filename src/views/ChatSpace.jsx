@@ -4,19 +4,24 @@ import ChatspaceChat from '../components/ChatspaceChat';
 import SearchBar from '../components/SearchBar';
 import ContactList from '../components/ContactList';
 import Grid from '@mui/material/Grid';
+import CustomerInfo from '../components/CustomerInfo';
 function ChatSpace() {
   return (
     <>
-        <Grid container spacing={2}>
+        <Grid container spacing={0.7}>
             
             
-            <Grid item xs={4}>
+            <Grid item xs={3}>
                 <SearchBar />
                 <ContactList />
             </Grid>
 
-            <Grid item xs={8}>
+            <Grid item xs={7}>
                 <ChatspaceChat />
+            </Grid>
+
+            <Grid item xs={2}>
+                <CustomerInfo />
             </Grid>
         </Grid>
     </>
