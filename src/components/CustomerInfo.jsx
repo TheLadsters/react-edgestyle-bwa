@@ -7,7 +7,7 @@ function CustomerInfo() {
     const styles = {
         mainCard: {
             marginTop: '20px',
-            height: '95vh',
+            height: '90vh',
             paddingTop: '15px',
             display: 'flex',
             flexDirection: 'column',

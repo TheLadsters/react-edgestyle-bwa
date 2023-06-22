@@ -20,6 +20,9 @@ export default function SearchBar() {
       gridItem: {
         marginBottom: '8px'
       }, 
+      gridContainer: {
+
+      },
       checkBox: {
         backgroundColor: '#e8e4e4'
       },
@@ -34,7 +37,6 @@ export default function SearchBar() {
         },
         searchBtn : {
           backgroundColor: 'RGB(0,128,45)',
-          width: '100%'
         }
     }
 
@@ -81,14 +83,14 @@ export default function SearchBar() {
             </Grid>
         </Grid>
 
-        <Grid sx={styles.gridItem} container>
-            <Grid item xs={3}>
+        <Grid sx={styles.gridItem} justifyContent={'space-around'} container>
+            <Grid item>
               <Button style={styles.clearBtn} variant="contained">
                 Clear
                 </Button>
             </Grid>
 
-            <Grid item xs={9}>
+            <Grid item>
                 <Button style={styles.searchBtn} variant="contained">
                   Search
                 </Button>

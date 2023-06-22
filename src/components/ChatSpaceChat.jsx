@@ -30,7 +30,7 @@ export default function ChatSpaceChat() {
     const styles = {
         card: {
             borderRadius: '10px', marginTop: '20px', 
-            height: '98vh', marginRight: '10px',
+            height: '90vh', marginRight: '10px',
             padding: '20px 20px',
             display: 'flex',
             flexDirection: 'column',
