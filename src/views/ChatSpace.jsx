@@ -11,7 +11,7 @@ return (
         <Grid container spacing={0.7} sx={{marginTop: '60px'}}>      
             
             <Grid item xs={3}>
-                <Grid container gap={2} direction={'column'}>
+                <Grid container gap={1} direction={'column'}>
                     <SearchBar />
                     <ContactList />
                 </Grid>
