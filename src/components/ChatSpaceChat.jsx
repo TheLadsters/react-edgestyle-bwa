@@ -53,7 +53,7 @@ export default function ChatSpaceChat() {
             padding: '20px 20px',
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
         },
         sendAndInfo: {
             borderRadius: '20px', padding: '10px 15px', backgroundColor: 'RGB(0,128,45)'
@@ -68,7 +68,13 @@ export default function ChatSpaceChat() {
         },
         addAndEmoticon: {
             backgroundColor: '#e8e4e4',
-        }
+        },
+        scrollableContent: {
+            maxHeight: 'calc(100vh - 300px)', // Adjust the height as needed
+            overflowY: 'auto',
+            marginTop: '20px',
+            marginBottom: '10px',
+          },
     }
 
     const messageArea  = messages.map((msg, idx)=> {
@@ -81,74 +87,64 @@ export default function ChatSpaceChat() {
 
   return (
     <>
-<Card sx={{ minWidth: 275 }} style={styles.card}>
-        <Tabs>
-            <TabList>
-                <Tab>
-                    タイムライン
-                </Tab>
+<Card sx={{ minWidth: 275, height: '100%' }} style={styles.card}>
+      <Tabs>
+        <TabList>
+          <Tab>タイムライン</Tab>
+          <Tab>Timeline</Tab>
+        </TabList>
 
-                <Tab>
-                    Timeline
-                </Tab>
-            </TabList>
+        <TabPanel value={0} sx={styles.scrollableContent}>
+          {/* Japanese Chat translation */}
+          <Grid container>
+            {messageArea}
+          </Grid>
+        </TabPanel>
 
-            <TabPanel  value={0}>
-                {/* Japanese Chat translation */}
-                <Grid container>
-                    {messageArea}
-                </Grid>
-            </TabPanel>
+        <TabPanel value={1}>
+          {/* English Chat translation */}
+          <Grid>
+            ENGLISH TRANSLATION
+          </Grid>
+        </TabPanel>
+      </Tabs>
 
-            <TabPanel value={1}>
-                {/* English Chat translation */}
-                <Grid>
-                    ENGLISH TRANSLATION
-                </Grid>
-            </TabPanel>
-        </Tabs>
-
-
-    <Grid container direction={'column'}> 
-            <Grid container>
-                <Grid item xs={12}>
-                <TextField fullWidth label="Enter a message..." style={{marginBottom: '15px'}} />
-            </Grid>
+      <Grid container direction="column">
+        <Grid container>
+          <Grid item xs={12}>
+            <TextField fullWidth label="Enter a message..." style={{ marginBottom: '15px' }} />
+          </Grid>
         </Grid>
 
-        <Grid container justifyContent={'space-between'}>  
-            <Grid item>
-                <IconButton size="large">
-                    <Add sx={styles.addAndEmoticon} />
-                </IconButton>
+        <Grid container justifyContent="space-between">
+          <Grid item>
+            <IconButton size="large">
+              <Add sx={styles.addAndEmoticon} />
+            </IconButton>
 
-                <IconButton size="large">
-                    <InsertEmoticon sx={styles.addAndEmoticon} />
-                </IconButton>
-            </Grid>
+            <IconButton size="large">
+              <InsertEmoticon sx={styles.addAndEmoticon} />
+            </IconButton>
+          </Grid>
 
-            <Grid item>
-                <Button variant="contained" style={styles.escalate}
-                    onClick={openEscalateModal}
-                >
-                    <Error style={{marginRight: '5px'}} />
-                    Escalate
-                </Button>
+          <Grid item>
+            <Button variant="contained" style={styles.escalate} onClick={openEscalateModal}>
+              <Error style={{ marginRight: '5px' }} />
+              Escalate
+            </Button>
 
-                <Button variant="contained" style={styles.template}
-                onClick={openTemplateModal}
-                >
-                    <Forum style={{marginRight: '5px'}} />
-                    Template
-                </Button>
+            <Button variant="contained" style={styles.template} onClick={openTemplateModal}>
+              <Forum style={{ marginRight: '5px' }} />
+              Template
+            </Button>
 
-                <Button variant="contained" style={styles.sendAndInfo}>
-                    Send
-                    <Send style={{marginLeft: '5px'}} />
-                </Button>
-            </Grid>
+            <Button variant="contained" style={styles.sendAndInfo}>
+              Send
+              <Send style={{ marginLeft: '5px' }} />
+            </Button>
+          </Grid>
         </Grid>
-    </Grid>
+      </Grid>
 </Card>
 
     <EscalatePopup open={openEscalate} handleClose={closeEscalateModal} />
