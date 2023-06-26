@@ -4,6 +4,7 @@ import {Grid, Card, Button, Box, TextField, IconButton} from '@mui/material';
 import {Forum, Send, Error, InsertEmoticon, Add} from '@mui/icons-material';
 import {Tabs, TabList, Tab, TabPanel} from '@mui/joy';
 import EscalatePopup from './Modals/EscalatePopup';
+import TemplatePopup from './Modals/TemplatePopup';
 import MessageLeft from './MessageLeft';
 import MessageRight from './MessageRight';
 import axiosClient from "../axios-client";
@@ -11,6 +12,7 @@ import axiosClient from "../axios-client";
 
 export default function ChatSpaceChat() {
     const [openEscalate, setOpenEscalate] = React.useState(false);
+    const [openTemplate, setOpenTemplate] = React.useState(false);
     const [messages, setMesssages] = useState([]);
 
     function openEscalateModal(){
@@ -21,12 +23,19 @@ export default function ChatSpaceChat() {
         setOpenEscalate(false)
     }
 
+    function openTemplateModal(){
+        setOpenTemplate(true)
+    }
+
+    function closeTemplateModal(){
+        setOpenTemplate(false)
+    }
+
     useEffect(() => {
         async function fetchMessages(){
             try{
                 await axiosClient.get("/get_messages").then(({ data }) => {
                     setMesssages(data);
-                    console.log(data)
                 });
             }
             catch(err){
@@ -87,7 +96,7 @@ export default function ChatSpaceChat() {
             <TabPanel  value={0}>
                 {/* Japanese Chat translation */}
                 <Grid container>
-                    {/* {messageArea} */}
+                    {messageArea}
                 </Grid>
             </TabPanel>
 
@@ -126,7 +135,9 @@ export default function ChatSpaceChat() {
                     Escalate
                 </Button>
 
-                <Button variant="contained" style={styles.template}>
+                <Button variant="contained" style={styles.template}
+                onClick={openTemplateModal}
+                >
                     <Forum style={{marginRight: '5px'}} />
                     Template
                 </Button>
@@ -141,6 +152,7 @@ export default function ChatSpaceChat() {
 </Card>
 
     <EscalatePopup open={openEscalate} handleClose={closeEscalateModal} />
+    <TemplatePopup open={openTemplate} handleClose={closeTemplateModal} />
     </>
   )
 }

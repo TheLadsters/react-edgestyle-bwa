@@ -5,7 +5,7 @@ import { useTheme } from "@mui/material/styles";
 import {
     Box, Avatar, List, CssBaseline, Grid, Typography, IconButton, Divider,
     ListItem, ListItemButton, ListItemIcon, ListItemText} from "@mui/material";
-import { ChevronLeft, ChevronRight, Dashboard, Forum, Build, Logout } from "@mui/icons-material";
+import { Dashboard, Forum, Build, Logout } from "@mui/icons-material";
 import DrawerHeader from "../components/DrawerHeader";
 import CustomDrawer from "../components/CustomDrawer";
 import Header from '../components/Header';
