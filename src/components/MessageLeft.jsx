@@ -12,8 +12,12 @@ function MessageLeft(props) {
           display: 'flex',
           alignItems: 'flex-start',
           flexDirection: 'column',
-          bgcolor: 'background.paper',
-          borderRadius: 1,
+          bgcolor: '#e8e4e4',
+          borderRadius: 4,
+          boxShadow: 2,
+          p: 2,
+          my: 1,
+          maxWidth: '40vh'
         }}
       >
         {message}

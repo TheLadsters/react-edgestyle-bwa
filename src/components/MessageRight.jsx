@@ -11,7 +11,6 @@ function MessageRight(props) {
         sx={{
           display: 'flex',
           flexDirection: 'row-reverse',
-          bgcolor: 'background.paper',
           borderRadius: 1,
         }}
       >
@@ -20,10 +19,13 @@ function MessageRight(props) {
             display: 'flex',
             flexDirection: 'column-reverse',
             alignItems: 'flex-start',
-            p: 1,
+            p: 2,
             m: 1,
-            bgcolor: 'background.paper',
-            borderRadius: 1,
+            bgcolor: '#08842c',
+            borderRadius: 4,
+            color: 'white',
+            boxShadow: 2,
+            maxWidth: '40vh'
           }}
         >
             {message}

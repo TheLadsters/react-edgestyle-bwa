@@ -70,10 +70,9 @@ export default function ChatSpaceChat() {
             backgroundColor: '#e8e4e4',
         },
         scrollableContent: {
-            maxHeight: 'calc(100vh - 300px)', // Adjust the height as needed
+            maxHeight: 'calc(100vh - 350px)', // Adjust the height as needed
             overflowY: 'auto',
             marginTop: '20px',
-            marginBottom: '10px',
           },
     }
 
@@ -96,7 +95,7 @@ export default function ChatSpaceChat() {
 
         <TabPanel value={0} sx={styles.scrollableContent}>
           {/* Japanese Chat translation */}
-          <Grid container>
+          <Grid container direction={'column'}>
             {messageArea}
           </Grid>
         </TabPanel>
@@ -109,7 +108,7 @@ export default function ChatSpaceChat() {
         </TabPanel>
       </Tabs>
 
-      <Grid container direction="column">
+      <Grid item>
         <Grid container>
           <Grid item xs={12}>
             <TextField fullWidth label="Enter a message..." style={{ marginBottom: '15px' }} />
