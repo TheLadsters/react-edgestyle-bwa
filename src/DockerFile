@@ -1,0 +1,26 @@
+FROM node:alpine
+WORKDIR /app
+ENV DB_CONNECTION=mysql
+ENV DB_HOST=127.0.0.1
+ENV DB_PORT=3306
+ENV DB_DATABASE=mock_translation_laravel
+ENV DB_USERNAME=germaniii
+ENV DB_PASSWORD=55Vi885@
+ENV APP_DEBUG=true
+ENV VITE_API_BASE_URL=http://localhost:8000
+ENV BROADCAST_DRIVER="pusher"
+ENV VITE_BROADCAST_DRIVER="pusher"
+ENV PUSHER_APP_KEY="react-pusher"
+ENV VITE_PUSHER_APP_KEY="react-pusher"
+ENV PUSHER_APP_ID="react-pusher"
+ENV PUSHER_APP_SECRET="react-pusher"
+ENV PUSHER_APP_CLUSTER="mt1"
+ENV VITE_PUSHER_APP_CLUSTER="mt1"
+ENV PUSHER_PORT=8054
+ENV VITE_PUSHER_PORT=8054
+ENV APP_NAME="react-pusher"
+COPY package.json ./
+COPY package-lock.json ./
+COPY ./ ./
+RUN npm i
+CMD ["npm", "run", "host"]
