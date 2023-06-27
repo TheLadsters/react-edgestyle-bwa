@@ -50,6 +50,8 @@ export default function ChatSpaceChat() {
           setMesssages(data);
         });
       } catch (err) {
+        console.log('APP KEY:', import.meta.env.VITE_PUSHER_APP_KEY);
+
         console.log(err);
       }
     };

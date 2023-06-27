@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import ChatspaceChat from '../components/ChatspaceChat';
+import ChatspaceChat from '../components/ChatSpaceChat';
 import SearchBar from '../components/SearchBar';
 import ContactList from '../components/ContactList';
 import Grid from '@mui/material/Grid';
