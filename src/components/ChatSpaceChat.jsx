@@ -50,50 +50,48 @@ export default function ChatSpaceChat() {
           setMesssages(data);
         });
       } catch (err) {
-        console.log('APP KEY:', import.meta.env.VITE_PUSHER_APP_KEY);
-
         console.log(err);
       }
     };
     // Fetch Messages Initially
     fetchMessages();
 
-    const pusher = new Pusher(import.meta.env.VITE_PUSHER_APP_KEY, {
-      broadcaster: import.meta.env.VITE_BROADCAST_DRIVER,
-      cluster: import.meta.env.VITE_PUSHER_APP_CLUSTER,
-      protocol: "http",
-      encrypted: true,
-      wsHost: "localhost",
-      wsPort: import.meta.env.VITE_PUSHER_PORT,
-      wssport: import.meta.env.VITE_PUSHER_PORT,
-      transports: ["websocket"],
-      forceTLS: false,
-    });
+    // const pusher = new Pusher(import.meta.env.VITE_PUSHER_APP_KEY, {
+    //   broadcaster: import.meta.env.VITE_BROADCAST_DRIVER,
+    //   cluster: import.meta.env.VITE_PUSHER_APP_CLUSTER,
+    //   protocol: "http",
+    //   encrypted: true,
+    //   wsHost: "localhost",
+    //   wsPort: import.meta.env.VITE_PUSHER_PORT,
+    //   wssport: import.meta.env.VITE_PUSHER_PORT,
+    //   transports: ["websocket"],
+    //   forceTLS: false,
+    // });
 
-    const echo = new Echo({
-      broadcaster: "pusher",
-      client: pusher,
-    });
+    // const echo = new Echo({
+    //   broadcaster: "pusher",
+    //   client: pusher,
+    // });
 
-    // Your event listeners
-    echo
-      .channel("private_channel")
-      .subscribed(() => {
-        console.log("connected to websocket");
-      })
-      .listen(".NewMessageEvent", (data) => {
-        // Handle the event data
-        console.log("New Message is Received");
-        fetchMessages();
-      })
-      .error((e) => {
-        console.log("Error Receiving ConsoleLogEvent", e);
-      });
+    // // Your event listeners
+    // echo
+    //   .channel("private_channel")
+    //   .subscribed(() => {
+    //     console.log("connected to websocket");
+    //   })
+    //   .listen(".NewMessageEvent", (data) => {
+    //     // Handle the event data
+    //     console.log("New Message is Received");
+    //     fetchMessages();
+    //   })
+    //   .error((e) => {
+    //     console.log("Error Receiving ConsoleLogEvent", e);
+    //   });
 
-    // Clean up the Echo instance when the component is unmounted
-    return () => {
-      echo.disconnect();
-    };
+    // // Clean up the Echo instance when the component is unmounted
+    // return () => {
+    //   echo.disconnect();
+    // };
   }, []);
 
   const storeNewMessage = async (inputMessage) => {
