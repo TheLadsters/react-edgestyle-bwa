@@ -21,7 +21,7 @@ export default function ContactList() {
   }
   return (
       <Card style={cardStyle}>
-          <List key={1}>
+          <List>
             {
               // Data will be mapped here for contacts
               // temporary
@@ -29,7 +29,6 @@ export default function ContactList() {
               '12345', '2492', '2569', 
               '25562', '23663', '12345',
               '596930', '590239', '2492'].map((num, index)=>(
-                <>
                 <ListItemButton key={index}>
                   <ListItem key={index} alignItems="flex-start">
                     <ListItemAvatar key={index}>
@@ -60,7 +59,6 @@ export default function ContactList() {
                   </ListItem>
                   <Divider />
                 </ListItemButton>
-                </>
               ))
             }
             </List>

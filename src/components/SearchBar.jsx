@@ -10,20 +10,20 @@ import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
 export default function SearchBar() {
     const styles = {
       card: {
-        padding: '8px 8px',
+        padding: '0px 8px',
+        paddingTop: '20px',
         marginTop: '20px',
-        width: '100%'
+        width: '100%',
       },
       mainGrid: {
+        display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
       },
       gridItem: {
+        marginTop: '8px',
         marginBottom: '8px'
       }, 
-      gridContainer: {
-
-      },
       checkBox: {
         backgroundColor: '#e8e4e4'
       },
@@ -34,10 +34,12 @@ export default function SearchBar() {
         },
         clearBtn: {
           backgroundColor: '#e8e4e4',
-          color: 'black'
+          color: 'black',
+          width: '100%'
         },
         searchBtn : {
           backgroundColor: 'RGB(0,128,45)',
+          width: '100%'
         }
     }
 
@@ -65,7 +67,6 @@ export default function SearchBar() {
 
         <Grid sx={styles.gridItem} item>
           <Input 
-          // sx={styles.searchBar}
             size="md"
             placeholder="Search..."
             type="text"
@@ -84,18 +85,20 @@ export default function SearchBar() {
             </Grid>
         </Grid>
 
-        <Grid sx={styles.gridItem} justifyContent={'space-around'} container>
-            <Grid item>
+        <Grid>
+          <Grid container justifyContent={'space-around'}>
+            <Grid item sx={4}>
               <Button style={styles.clearBtn} variant="contained">
                 Clear
                 </Button>
             </Grid>
 
-            <Grid item>
+            <Grid item xs={8}>
                 <Button style={styles.searchBtn} variant="contained">
                   Search
                 </Button>
             </Grid>
+          </Grid>    
         </Grid>
 
       </Grid>
