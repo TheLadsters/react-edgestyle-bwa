@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, {useState} from 'react'
 import { Modal, ModalDialog, ModalClose, 
@@ -6,6 +7,7 @@ import { Box, Grid, List} from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
 function TemplatePopup(props) {
+    const [index, setIndex] = useState(0);
     const style = {
         dialog: {
             width: '60%'
@@ -30,11 +32,12 @@ function TemplatePopup(props) {
 
     const options = categoryOptions.map((opt, idx) => {
         return (
-            <Tab 
-            key={idx}
-            >
-                {opt.optionTitle}
-            </Tab>
+                <Tab 
+                sx={index === idx ? style.selectedTab : null}
+                key={idx}
+                >
+                    {opt.optionTitle}
+                </Tab>
             )
     })
     
@@ -49,7 +52,8 @@ function TemplatePopup(props) {
                         <Typography sx={{marginLeft: '10px'}} level="h4">CATEGORIES</Typography>
                           <Tabs 
                             size="lg"
-                            // value={activeTab} 
+                            value={index} 
+                            onChange={(event, value) => setIndex(value)}
                             aria-label="Vertical tabs"
                             orientation="vertical"
                             sx={{ minWidth: 300, borderRadius: 'lg' }}
